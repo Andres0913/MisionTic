@@ -1,0 +1,72 @@
+zonas = int(input())
+cant_ant_insta=0
+rango_anti= 36900
+
+tipo_a = 0
+tipo_b = 0
+tipo_c = 0
+tipo_d = 0
+tipo_e = 0
+total_antenas= 0
+
+for i in range(zonas):
+    area=float(input())
+    cantidad=int(input())
+    type=str(input())
+    if type == "a":
+        tipo = 44600
+    elif type == "b":
+        tipo = 51800
+    elif type == "c":
+        tipo = 9600
+    elif type == "d":
+        tipo = 15300
+    elif type== "e":
+        tipo = 13900
+    else:
+        tipo = 0
+
+    if(cantidad < 1 or area < cantidad*rango_anti):
+        antenas = 0
+    else:
+        antenas= (area-(cantidad*rango_anti))/tipo
+        if antenas % 1 > 0:
+            antenas = (antenas//1) + 1
+    
+    if type == "a":
+        tipo_a += antenas
+    elif type == "b":
+        tipo_b += antenas
+    elif type == "c":
+        tipo_c += antenas
+    elif type == "d":
+        tipo_d += antenas
+    else:
+        tipo_e += antenas
+
+    total_antenas+= antenas
+#Total de antenas 
+print(int(total_antenas))
+#Porcentaje por tipo de antenas
+if(tipo_a == 0):
+    print("a 0.00%")
+else:
+    print("a ","{}%".format(round((100/(total_antenas/tipo_a)),2)))
+if(tipo_b == 0):
+    print("b 0.00%")
+else:
+    print("b ","{}%".format(round((100/(total_antenas/tipo_b)),2)))
+if(tipo_c == 0):
+    print("c 0.00%")
+else:
+    print("c ","{}%".format(round((100/(total_antenas/tipo_c)),2)))
+if(tipo_d == 0):
+    print("d 0.00%")
+else:
+    print("d ","{}%".format(round((100/(total_antenas/tipo_d)),2)))
+if(tipo_e == 0):
+    print("e 0.00%")
+else:
+    print("e ","{}%".format(round((100/(total_antenas/tipo_e)),2)))
+
+
